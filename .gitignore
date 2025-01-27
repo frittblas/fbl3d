@@ -1,0 +1,11 @@
+projects/vs/.vs/
+projects/vs/fbl3d/Debug
+projects/vs/fbl3d/Release
+projects/vs/fbl3d/x64
+
+projects/vs/x64/Release/*.exe
+projects/vs/x64/Release/*.lib
+projects/vs/x64/Release/*.pdb
+projects/vs/x64/Release/*.exp
+
+projects/vs/x64/Debug/
