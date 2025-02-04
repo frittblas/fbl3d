@@ -15,25 +15,38 @@
 
 #include "Sprite/Sprite.h"
 
-// this must be implemented in the game
-void game_tick(float deltaTime);
-
 struct SDL_Window;
 
 class Engine {
 
 public:
 
-    Engine();
-    ~Engine();
+    static void initGame();
+    static void gameLoop();
+    static void quitGame();
+    static void quit();
 
-    bool init();
-    void update();
-    void quit();
+    static Sprite spr;
 
 private:
 
+    static bool fbl3dInit(int w, int h, int fps);
+    static void update();
+    static void updateGame();
+    static void render();
+
     //The window we'll be rendering to
-    SDL_Window* mWindow;
+    static SDL_Window* mWindow;
+	static bool mQuit;
+
+    // frame timing stuff
+    static int mTargetFps;
+    static int mTargetMsPerFrame;
+    static int mTimeToWait;
+    static int mMsPerFrame;
+    static double mDeltaTime;
+    static double mFps;
+    static int mMsPrevFrame;
 
 };
+

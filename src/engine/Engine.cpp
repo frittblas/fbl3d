@@ -16,17 +16,31 @@
 #include <SDL3/SDL.h>
 #include <string>
 
-#include <iostream>
+// Definitions
+SDL_Window* Engine::mWindow;
+bool Engine::mQuit;
 
-Engine::Engine() {
-	std::cout << "Initialized fbl3 engine." << std::endl;
+int Engine::mTargetFps;
+int Engine::mTargetMsPerFrame;
+int Engine::mTimeToWait;
+int Engine::mMsPrevFrame;
+double Engine::mDeltaTime;
+double Engine::mFps;
+int Engine::mMsPerFrame;
+
+int main(int argc, char* argv[]) {
+
+
+    Engine::initGame();
+	Engine::gameLoop();
+    Engine::quitGame();
+    Engine::quit();
+
+    return 0;
+
 }
 
-Engine::~Engine() {
-	std::cout << "Destroyed fbl3 engine." << std::endl;
-}
-
-bool Engine::init()
+bool Engine::fbl3dInit(int w, int h, int fps)
 {
 
     bool success = true;
@@ -52,29 +66,88 @@ bool Engine::init()
         }
     }
 
-	SDL_Delay(3000);
+    mTargetFps = fps;
+    mTargetMsPerFrame = 1000 / mTargetFps;
+
+    mQuit = false;
 
     return success;
+
+}
+
+void Engine::gameLoop()
+{
+	// Event handler
+	SDL_Event e;
+
+    SDL_Log("Game loop running!");
+
+    //The main loop
+    while (mQuit == false)
+    {
+        //Get event data
+        while (SDL_PollEvent(&e))
+        {
+            //If event is quit type
+            if (e.type == SDL_EVENT_QUIT)
+            {
+                //End the main loop
+                mQuit = true;
+            }
+        }
+
+        update();
+		render();
+
+    }
 
 }
 
 void Engine::update()
 {
 
-	std::cout << "Game loop running." << std::endl;
+    updateGame();
 
-	float deltaTime = 0.0f;
+    // frame timing
 
-	game_tick(deltaTime);
+    // If we are too fast, waste some time until we reach the mTargetMsPerFrame
+    mTimeToWait = mTargetMsPerFrame - (SDL_GetTicks() - mMsPrevFrame);
+    if (mTimeToWait > 0 && mTimeToWait <= mTargetMsPerFrame) {
+        SDL_Delay(mTimeToWait);
+    }
+
+    // The difference in ticks since the last frame, converted to seconds
+    mDeltaTime = (SDL_GetTicks() - mMsPrevFrame) / 1000.0;
+
+    // Store how many ms a whole frame took
+    mMsPerFrame = SDL_GetTicks() - mMsPrevFrame;
+
+    // Store the "previous" frame time
+    mMsPrevFrame = SDL_GetTicks();
+
+    // Calculate frames per second
+    mFps = 1000.0 / mMsPerFrame;
+
+    if (rand() % 30 == 0) {
+        SDL_Log("time to wait = %d, msPerFrame = %d, FPS = %f", mTimeToWait, mMsPerFrame, mFps);
+    }
+
+}
+
+void Engine::render() {
 
 }
 
 void Engine::quit()
 {
+
+    SDL_Log("Quitting fbl3 engine.");
+
     //Destroy window
 	SDL_DestroyWindow(mWindow);
-	mWindow = NULL;
+    mWindow = NULL;
+
 	//Quit SDL subsystems
 	SDL_Quit();
-	std::cout << "Quitting fbl3 engine." << std::endl;
+
 }

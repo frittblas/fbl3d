@@ -11,20 +11,19 @@
 */
 
 #include "../engine/Engine.h"
-#include <iostream>
 
-int main(int argc, char* argv[]) {
-	
-	Engine engine;
 
-	engine.init();
-	engine.update();
-	engine.quit();
+void Engine::initGame() {
 
-	return 0;
+	fbl3dInit(960, 540, 60);
 
 }
 
-void game_tick(float deltaTime) {
-	std::cout << "Called game tick." << std::endl;
+void Engine::updateGame() {
+
+
+}
+
+void Engine::quitGame() {
+
 }
