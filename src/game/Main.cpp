@@ -12,7 +12,6 @@
 
 #include "../engine/Engine.h"
 
-
 void Engine::initGame() {
 
 	fbl3dInit(960, 540, 60);

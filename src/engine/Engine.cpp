@@ -12,14 +12,16 @@
 */
 
 #include "Engine.h"
-
+#include "Sprite/Sprite.h"
 #include <SDL3/SDL.h>
-#include <string>
 
-// Definitions
+// definitions
 SDL_Window* Engine::mWindow;
-bool Engine::mQuit;
 
+// managers
+SpriteManager Engine::mSpr;
+
+// frame timing stuff
 int Engine::mTargetFps;
 int Engine::mTargetMsPerFrame;
 int Engine::mTimeToWait;
@@ -27,6 +29,8 @@ int Engine::mMsPrevFrame;
 double Engine::mDeltaTime;
 double Engine::mFps;
 int Engine::mMsPerFrame;
+
+bool Engine::mQuit;
 
 int main(int argc, char* argv[]) {
 

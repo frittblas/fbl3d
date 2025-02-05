@@ -13,9 +13,8 @@
 
 #pragma once
 
-#include "Sprite/Sprite.h"
-
 struct SDL_Window;
+struct SpriteManager;
 
 class Engine {
 
@@ -26,7 +25,7 @@ public:
     static void quitGame();
     static void quit();
 
-    static Sprite spr;
+    static SpriteManager mSpr;
 
 private:
 
@@ -37,7 +36,6 @@ private:
 
     //The window we'll be rendering to
     static SDL_Window* mWindow;
-	static bool mQuit;
 
     // frame timing stuff
     static int mTargetFps;
@@ -47,6 +45,8 @@ private:
     static double mDeltaTime;
     static double mFps;
     static int mMsPrevFrame;
+
+    static bool mQuit;
 
 };
 

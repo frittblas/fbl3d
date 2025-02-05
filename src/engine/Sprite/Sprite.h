@@ -15,29 +15,35 @@
 
 #include <cstdint>
 #include <vector>
+#include <unordered_map>
 
-struct SpriteStruct {
-	int x, y;
-	int layer;
+struct SDL_Rect;
+
+struct Sprite {
+	SDL_Rect src, dst;	// src rect is image on texture, dst rect is where on screen
+	uint8_t layer;
 };
 
-class Sprite {
+class SpriteManager {
 
 public:
 	
-    Sprite();
-    ~Sprite();
+    SpriteManager();
+    ~SpriteManager();
 	
-	SpriteStruct& get(int id);
+	uint32_t create(int x, int y, int w, int h, uint8_t layer);
+	Sprite& get(uint32_t id);
 	void sort();
+	void clearAll();
 
 
 private:
-	std::vector<Sprite> mSpriteList;
-	std::vector<Sprite> mIdList;
-
-	uint32_t nextSpriteId = 0;
 
 	void render();
+
+	std::vector<Sprite> mSpriteList;
+	std::unordered_map<uint32_t, size_t> mIdToIndexMap;
+
+	uint32_t mNextSpriteId;
 
 };
