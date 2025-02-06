@@ -14,7 +14,6 @@
 #include "Sprite.h"
 #include <iostream>
 #include <algorithm>
-#include <SDL3/SDL.h>
 
 SpriteManager::SpriteManager() {
 	mNextSpriteId = 0;
@@ -22,38 +21,62 @@ SpriteManager::SpriteManager() {
 }
 
 SpriteManager::~SpriteManager() {
+	clearAll();
+	SDL_DestroyTexture(mTexture);
 	std::cout << "Destroyed Sprite subsystem." << std::endl;
+}
+
+bool SpriteManager::loadTexture(SDL_Renderer* renderer, const char* path)
+{
+
+	SDL_Surface* surface = SDL_LoadBMP(path);
+
+	if (!surface) {
+		SDL_Log("Error loading sprite texture: %s", SDL_GetError());
+		return false;
+	}
+
+	// 2. Set the color key (magenta)
+	//Uint32 magentaColor = SDL_MapRGB(surface->format, 255, 0, 255);
+	//SDL_SetSurfaceColorKey(surface, true, magentaColor);
+
+	mTexture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	if (!mTexture) {
+		SDL_Log("Error creating sprite texture from surface: %s", SDL_GetError());
+		return false;
+	}
+
+	SDL_DestroySurface(surface);
+
+	return true;
+
 }
 
 uint32_t SpriteManager::create(int x, int y, int w, int h, uint8_t layer)
 {
 	Sprite spr;
-	spr.src.x = x;
-	spr.src.y = y;
-	spr.src.w = w;
-	spr.src.h = h;
+	spr.src.x = static_cast<float>(x);
+	spr.src.y = static_cast<float>(y);
+	spr.src.w = static_cast<float>(w);
+	spr.src.h = static_cast<float>(h);
 	spr.layer = layer;
+	spr.dst.x = 0;
+	spr.dst.y = 0;
+	spr.dst.w = spr.src.w;
+	spr.dst.h = spr.src.h;
 	mSpriteList.push_back(spr);
-	mIdToIndexMap[mNextSpriteId] = mSpriteList.size() - 1; // Map ID to index
+	mIdToIndexMap[mNextSpriteId] = mSpriteList.size() - 1; //map id to index
 	return mNextSpriteId++;
 }
 
 Sprite& SpriteManager::get(uint32_t id)
 {
 	return mSpriteList[id];
-	//return mSpriteList[mIdToIndexMap[id]];
 }
 
 void SpriteManager::sort() {
 
-	std::sort(mSpriteList.begin(), mSpriteList.end(), [](const Sprite& a, const Sprite& b) {
-		return a.layer < b.layer;
-		});
-
-
-	for (size_t i = 0; i < mSpriteList.size(); ++i) {
-		//mIdToIndexMap[mSpriteList[i].id] = i;
-	}
 }
 
 void SpriteManager::clearAll()
@@ -63,14 +86,15 @@ void SpriteManager::clearAll()
 	mNextSpriteId = 0;
 }
 
-void SpriteManager::render()
+void SpriteManager::render(SDL_Renderer* renderer)
 {
 
-	const int spriteCount = mSpriteList.size();
+	const size_t spriteCount = mSpriteList.size();
 
 	// render sprites
 	for (int i = 0; i < spriteCount; i++) {
-
+		SDL_RenderTextureRotated(renderer, mTexture, &mSpriteList[i].src,
+			&mSpriteList[i].dst, 0, nullptr, SDL_FLIP_NONE);
 	}
 
 }

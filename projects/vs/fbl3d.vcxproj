@@ -139,11 +139,13 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\engine\Engine.cpp" />
     <ClCompile Include="..\..\src\engine\Sprite\Sprite.cpp" />
-    <ClCompile Include="..\..\src\game\Main.cpp" />
+    <ClCompile Include="..\..\src\game\Entry.cpp" />
+    <ClCompile Include="..\..\src\game\Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\engine\Engine.h" />
     <ClInclude Include="..\..\src\engine\Sprite\Sprite.h" />
+    <ClInclude Include="..\..\src\game\Game.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

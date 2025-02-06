@@ -17,6 +17,7 @@
 
 // definitions
 SDL_Window* Engine::mWindow;
+SDL_Renderer* Engine::mRenderer;
 
 // managers
 SpriteManager Engine::mSpr;
@@ -34,88 +35,76 @@ bool Engine::mQuit;
 
 int main(int argc, char* argv[]) {
 
-
     Engine::initGame();
-	Engine::gameLoop();
+	Engine::loopEngine();
     Engine::quitGame();
-    Engine::quit();
+    Engine::quitEngine();
 
     return 0;
 
 }
 
-bool Engine::fbl3dInit(int w, int h, int fps)
+bool Engine::initEngine(int w, int h, int fps)
 {
-
-    bool success = true;
-
-    //Initialize SDL
-    if (!SDL_Init(SDL_INIT_VIDEO))
-    {
+    if (!SDL_Init(SDL_INIT_VIDEO)) {
         SDL_Log("SDL could not initialize! SDL error: %s\n", SDL_GetError());
-        success = false;
+        return false;
     }
-    else
-    {
-        //Create window
-        mWindow = SDL_CreateWindow("SDL3 Tutorial: Hello SDL3", 960, 540, 0);
-        if(mWindow == nullptr)
-        {
-            SDL_Log("Window could not be created! SDL error: %s\n", SDL_GetError());
-            success = false;
-        }
-        else
-        {
-            SDL_Log("SDL3 working! :)\n");
-        }
+
+    mWindow = SDL_CreateWindow("SDL3 Tutorial: Hello SDL3", 960, 540, 0);
+    if(mWindow == nullptr) {
+        SDL_Log("Window could not be created! SDL error: %s\n", SDL_GetError());
+        return false;
     }
+
+    mRenderer = SDL_CreateRenderer(mWindow, nullptr);
+    if (mRenderer == nullptr) {
+        SDL_Log("Renderer could not be created! SDL error: %s\n", SDL_GetError());
+		return false;
+    }
+
+    SDL_Log("SDL3 working! :)\n");
 
     mTargetFps = fps;
     mTargetMsPerFrame = 1000 / mTargetFps;
 
     mQuit = false;
 
-    return success;
+    return true;
 
 }
 
-void Engine::gameLoop()
+void Engine::loopEngine()
 {
-	// Event handler
+
 	SDL_Event e;
 
     SDL_Log("Game loop running!");
 
-    //The main loop
     while (mQuit == false)
     {
-        //Get event data
         while (SDL_PollEvent(&e))
         {
-            //If event is quit type
             if (e.type == SDL_EVENT_QUIT)
             {
-                //End the main loop
                 mQuit = true;
             }
         }
 
-        update();
-		render();
+        updateEngine();
+		render2d();
 
     }
 
 }
 
-void Engine::update()
+void Engine::updateEngine()
 {
 
     updateGame();
 
-    // frame timing
-
     // If we are too fast, waste some time until we reach the mTargetMsPerFrame
-    mTimeToWait = mTargetMsPerFrame - (SDL_GetTicks() - mMsPrevFrame);
+    mTimeToWait = static_cast<int>(mTargetMsPerFrame - (SDL_GetTicks() - mMsPrevFrame));
     if (mTimeToWait > 0 && mTimeToWait <= mTargetMsPerFrame) {
         SDL_Delay(mTimeToWait);
     }
@@ -124,10 +113,10 @@ void Engine::update()
     mDeltaTime = (SDL_GetTicks() - mMsPrevFrame) / 1000.0;
 
     // Store how many ms a whole frame took
-    mMsPerFrame = SDL_GetTicks() - mMsPrevFrame;
+    mMsPerFrame = static_cast<int>(SDL_GetTicks() - mMsPrevFrame);
 
     // Store the "previous" frame time
-    mMsPrevFrame = SDL_GetTicks();
+    mMsPrevFrame = static_cast<int>(SDL_GetTicks());
 
     // Calculate frames per second
     mFps = 1000.0 / mMsPerFrame;
@@ -138,20 +127,35 @@ void Engine::update()
 
 }
 
-void Engine::render() {
+void Engine::render2d() {
+
+	SDL_RenderClear(mRenderer);
+	mSpr.render(mRenderer); // Render all sprites to backbuffer (private function friend class)
+	SDL_RenderPresent(mRenderer);
 
 }
 
-void Engine::quit()
+void Engine::quitEngine()
 {
-
-    SDL_Log("Quitting fbl3 engine.");
-
-    //Destroy window
+    SDL_Log("Quitting fbl3b engine.");
+	SDL_DestroyRenderer(mRenderer);
 	SDL_DestroyWindow(mWindow);
-    mWindow = NULL;
-
-	//Quit SDL subsystems
 	SDL_Quit();
+}
 
+// public fbl3d api starts here
+
+void Engine::log(const char* msg, ...)
+{
+    va_list args;
+    char text_buf[256];
+    va_start(args, msg);
+#ifdef _MSC_VER
+    vsprintf_s(text_buf, 256, msg, args);
+#else
+    vsprintf(text_buf, msg, args);
+#endif
+    va_end(args);
+
+    SDL_Log("%s", text_buf);
 }

@@ -13,26 +13,29 @@
 
 #pragma once
 
-struct SDL_Window;
-struct SpriteManager;
+#include "Sprite/Sprite.h"
 
 class Engine {
 
 public:
 
-    static void initGame();
-    static void gameLoop();
-    static void quitGame();
-    static void quit();
+	static void initGame();     // called from main() in Engine.cpp
+	static void loopEngine();   // also called from main()
+	static void quitGame();	    // also called from main()
+	static void quitEngine();   // also called from main()
+
+    static bool initEngine(int w, int h, int fps);  // called from initGame() in Entry.cpp
+	static void log(const char* msg, ...);
+
+    static SDL_Renderer* mRenderer;
 
     static SpriteManager mSpr;
 
 private:
 
-    static bool fbl3dInit(int w, int h, int fps);
-    static void update();
-    static void updateGame();
-    static void render();
+	static void updateEngine(); // called from loopEngine() in Engine.cpp
+	static void updateGame();   // called from updateEngine() in Engine.cpp
+	static void render2d();	    // called from loopEngine() in Engine.cpp
 
     //The window we'll be rendering to
     static SDL_Window* mWindow;

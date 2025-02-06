@@ -36,7 +36,10 @@
     <ClCompile Include="..\..\src\engine\Sprite\Sprite.cpp">
       <Filter>Source Files\engine\Sprite</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\game\Main.cpp">
+    <ClCompile Include="..\..\src\game\Entry.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Game.cpp">
       <Filter>Source Files\game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -46,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\engine\Sprite\Sprite.h">
       <Filter>Source Files\engine\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Game.h">
+      <Filter>Source Files\game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
