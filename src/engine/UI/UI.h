@@ -35,8 +35,11 @@ private:
 
 	void init(SDL_Window* window, SDL_Renderer* renderer);
 	void update();
+	void processEvent(SDL_Event* e);
 	void render(SDL_Renderer* renderer);
 	void exit();
+
+	ImGuiIO* mIo;
 
 	friend class Engine;
 

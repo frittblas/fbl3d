@@ -51,7 +51,6 @@ bool Engine::initEngine(int w, int h, int fps)
 {
 
     // SDL3
-
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         SDL_Log("SDL could not initialize! SDL error: %s\n", SDL_GetError());
         return false;
@@ -94,7 +93,7 @@ void Engine::loopEngine()
     while (mQuit == false) {
         while (SDL_PollEvent(&e)) {
 
-            ImGui_ImplSDL3_ProcessEvent(&e);
+            mUI.processEvent(&e);
 
             if (e.type == SDL_EVENT_QUIT) {
                 mQuit = true;
@@ -102,7 +101,7 @@ void Engine::loopEngine()
         }
 
         updateEngine();
-		render2d();
+        render2d();
 
     }
 

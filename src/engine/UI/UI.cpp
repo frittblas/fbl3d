@@ -35,9 +35,9 @@ void UIManager::init(SDL_Window* window, SDL_Renderer* renderer)
 	// Setup Dear ImGui context
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+    mIo = &ImGui::GetIO();
+	mIo->ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+	mIo->ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
 	// Setup Dear ImGui style
 	ImGui::StyleColorsDark();
@@ -81,7 +81,7 @@ void UIManager::update()
         ImGui::SameLine();
         ImGui::Text("counter = %d", counter);
 
-        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / 60, 60);
+        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / mIo->Framerate, mIo->Framerate);
         ImGui::End();
     }
 
@@ -95,6 +95,11 @@ void UIManager::update()
         ImGui::End();
     }
 
+}
+
+void UIManager::processEvent(SDL_Event* e)
+{
+    ImGui_ImplSDL3_ProcessEvent(e);
 }
 
 void UIManager::render(SDL_Renderer* renderer)
