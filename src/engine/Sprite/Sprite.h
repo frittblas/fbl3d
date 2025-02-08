@@ -19,12 +19,14 @@
 #include <SDL3/SDL.h>
 
 
-struct Sprite {
+struct Sprite
+{
 	SDL_FRect src, dst;	// src rect is image on texture, dst rect is where on screen
 	uint8_t layer;
 };
 
-class SpriteManager {
+class SpriteManager
+{
 
 public:
 	

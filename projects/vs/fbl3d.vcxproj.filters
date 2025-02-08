@@ -28,6 +28,9 @@
     <Filter Include="Source Files\engine\Sprite">
       <UniqueIdentifier>{74d8793e-6924-4183-b3b5-30cbc416c797}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\ImGui">
+      <UniqueIdentifier>{da3d92c9-638a-4dad-953d-9659c02f0102}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\engine\Engine.cpp">

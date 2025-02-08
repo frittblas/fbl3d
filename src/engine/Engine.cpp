@@ -31,12 +31,13 @@ double Engine::mDeltaTime;
 double Engine::mFps;
 int Engine::mMsPerFrame;
 
+bool Engine::mLogMessages;
 bool Engine::mQuit;
 
 int main(int argc, char* argv[]) {
 
     Engine::initGame();
-	Engine::loopEngine();
+    Engine::loopEngine();
     Engine::quitGame();
     Engine::quitEngine();
 
@@ -68,6 +69,7 @@ bool Engine::initEngine(int w, int h, int fps)
     mTargetFps = fps;
     mTargetMsPerFrame = 1000 / mTargetFps;
 
+	mLogMessages = true;
     mQuit = false;
 
     return true;
@@ -77,16 +79,13 @@ bool Engine::initEngine(int w, int h, int fps)
 void Engine::loopEngine()
 {
 
-	SDL_Event e;
+    SDL_Event e;
 
     SDL_Log("Game loop running!");
 
-    while (mQuit == false)
-    {
-        while (SDL_PollEvent(&e))
-        {
-            if (e.type == SDL_EVENT_QUIT)
-            {
+    while (mQuit == false) {
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_EVENT_QUIT) {
                 mQuit = true;
             }
         }
@@ -107,6 +106,7 @@ void Engine::updateEngine()
     mTimeToWait = static_cast<int>(mTargetMsPerFrame - (SDL_GetTicks() - mMsPrevFrame));
     if (mTimeToWait > 0 && mTimeToWait <= mTargetMsPerFrame) {
         SDL_Delay(mTimeToWait);
+        //SDL_DelayPrecise(670);
     }
 
     // The difference in ticks since the last frame, converted to seconds
@@ -129,24 +129,26 @@ void Engine::updateEngine()
 
 void Engine::render2d() {
 
-	SDL_RenderClear(mRenderer);
-	mSpr.render(mRenderer); // Render all sprites to backbuffer (private function friend class)
-	SDL_RenderPresent(mRenderer);
+    SDL_RenderClear(mRenderer);
+    mSpr.render(mRenderer); // Render all sprites to backbuffer (private function friend class)
+    SDL_RenderPresent(mRenderer);
 
 }
 
 void Engine::quitEngine()
 {
     SDL_Log("Quitting fbl3b engine.");
-	SDL_DestroyRenderer(mRenderer);
-	SDL_DestroyWindow(mWindow);
-	SDL_Quit();
+    SDL_DestroyRenderer(mRenderer);
+    SDL_DestroyWindow(mWindow);
+    SDL_Quit();
 }
 
 // public fbl3d api starts here
 
 void Engine::log(const char* msg, ...)
 {
+	if (!mLogMessages) return;
+
     va_list args;
     char text_buf[256];
     va_start(args, msg);
