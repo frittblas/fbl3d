@@ -28,8 +28,17 @@
     <Filter Include="Source Files\engine\Sprite">
       <UniqueIdentifier>{74d8793e-6924-4183-b3b5-30cbc416c797}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\engine\ImGui">
-      <UniqueIdentifier>{da3d92c9-638a-4dad-953d-9659c02f0102}</UniqueIdentifier>
+    <Filter Include="Source Files\engine\UI">
+      <UniqueIdentifier>{3fbab1eb-45ab-48cd-8b29-17acc7b7630c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\vendor">
+      <UniqueIdentifier>{aa7c298f-9826-4a1e-82c8-0afd1f252277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\vendor\common">
+      <UniqueIdentifier>{1c2dbcbd-86c4-4ac2-a1c4-d75f0a9d9d3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\vendor\common\ImGui">
+      <UniqueIdentifier>{8023bc0d-a7be-48b3-b888-3adaa1908e67}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +54,33 @@
     <ClCompile Include="..\..\src\game\Game.cpp">
       <Filter>Source Files\game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\engine\UI\UI.cpp">
+      <Filter>Source Files\engine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\vendor\common\ImGui\imgui.cpp">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\vendor\common\ImGui\imgui_demo.cpp">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\vendor\common\ImGui\imgui_draw.cpp">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\vendor\common\ImGui\imgui_impl_sdl3.cpp">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\vendor\common\ImGui\imgui_impl_sdlgpu3.cpp">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\vendor\common\ImGui\imgui_impl_sdlrenderer3.cpp">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\vendor\common\ImGui\imgui_tables.cpp">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\vendor\common\ImGui\imgui_widgets.cpp">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\engine\Engine.h">
@@ -55,6 +91,36 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\Game.h">
       <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\engine\UI\UI.h">
+      <Filter>Source Files\engine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vendor\common\ImGui\imconfig.h">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vendor\common\ImGui\imgui.h">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vendor\common\ImGui\imgui_impl_sdl3.h">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vendor\common\ImGui\imgui_impl_sdlgpu3.h">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vendor\common\ImGui\imgui_impl_sdlrenderer3.h">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vendor\common\ImGui\imgui_internal.h">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vendor\common\ImGui\imstb_rectpack.h">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vendor\common\ImGui\imstb_textedit.h">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\vendor\common\ImGui\imstb_truetype.h">
+      <Filter>Source Files\vendor\common\ImGui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

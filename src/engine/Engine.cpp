@@ -13,6 +13,7 @@
 
 #include "Engine.h"
 #include "Sprite/Sprite.h"
+#include "UI/UI.h"
 #include <SDL3/SDL.h>
 
 // definitions
@@ -21,6 +22,7 @@ SDL_Renderer* Engine::mRenderer;
 
 // managers
 SpriteManager Engine::mSpr;
+UIManager Engine::mUI;
 
 // frame timing stuff
 int Engine::mTargetFps;
@@ -47,6 +49,9 @@ int main(int argc, char* argv[]) {
 
 bool Engine::initEngine(int w, int h, int fps)
 {
+
+    // SDL3
+
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         SDL_Log("SDL could not initialize! SDL error: %s\n", SDL_GetError());
         return false;
@@ -65,6 +70,9 @@ bool Engine::initEngine(int w, int h, int fps)
     }
 
     SDL_Log("SDL3 working! :)\n");
+
+    // ImGui
+	mUI.init(mWindow, mRenderer);
 
     mTargetFps = fps;
     mTargetMsPerFrame = 1000 / mTargetFps;
@@ -85,6 +93,9 @@ void Engine::loopEngine()
 
     while (mQuit == false) {
         while (SDL_PollEvent(&e)) {
+
+            ImGui_ImplSDL3_ProcessEvent(&e);
+
             if (e.type == SDL_EVENT_QUIT) {
                 mQuit = true;
             }
@@ -101,6 +112,8 @@ void Engine::updateEngine()
 {
 
     updateGame();
+
+	mUI.update();
 
     // If we are too fast, waste some time until we reach the mTargetMsPerFrame
     mTimeToWait = static_cast<int>(mTargetMsPerFrame - (SDL_GetTicks() - mMsPrevFrame));
@@ -121,23 +134,24 @@ void Engine::updateEngine()
     // Calculate frames per second
     mFps = 1000.0 / mMsPerFrame;
 
-    if (rand() % 30 == 0) {
+    if (rand() % 120 == 0) {
         SDL_Log("time to wait = %d, msPerFrame = %d, FPS = %f", mTimeToWait, mMsPerFrame, mFps);
     }
 
 }
 
-void Engine::render2d() {
-
+void Engine::render2d()
+{
     SDL_RenderClear(mRenderer);
     mSpr.render(mRenderer); // Render all sprites to backbuffer (private function friend class)
+	mUI.render(mRenderer);
     SDL_RenderPresent(mRenderer);
-
 }
 
 void Engine::quitEngine()
 {
     SDL_Log("Quitting fbl3b engine.");
+	mUI.exit();
     SDL_DestroyRenderer(mRenderer);
     SDL_DestroyWindow(mWindow);
     SDL_Quit();

@@ -14,6 +14,7 @@
 #pragma once
 
 #include "Sprite/Sprite.h"
+#include "UI/UI.h"
 
 class Engine
 {
@@ -31,6 +32,7 @@ public:
     static SDL_Renderer* mRenderer;
 
     static SpriteManager mSpr;
+	static UIManager mUI;
 
 private:
 
