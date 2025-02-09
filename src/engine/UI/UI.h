@@ -13,9 +13,9 @@
 
 #pragma once
 
-#include "../../vendor/common/ImGui/imgui.h"
-#include "../../vendor/common/ImGui/imgui_impl_sdl3.h"
-#include "../../vendor/common/ImGui/imgui_impl_sdlrenderer3.h"
+#include <ImGui/imgui.h>
+#include <ImGui/imgui_impl_sdl3.h>
+#include <ImGui/imgui_impl_sdlrenderer3.h>
 #include <SDL3/SDL.h>
 
 struct UI

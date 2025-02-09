@@ -29,7 +29,7 @@ int Engine::mTargetFps;
 int Engine::mTargetMsPerFrame;
 int Engine::mTimeToWait;
 int Engine::mMsPrevFrame;
-double Engine::mDeltaTime;
+float Engine::mDeltaTime;
 double Engine::mFps;
 int Engine::mMsPerFrame;
 
@@ -56,7 +56,7 @@ bool Engine::initEngine(int w, int h, int fps)
         return false;
     }
 
-    mWindow = SDL_CreateWindow("SDL3 Tutorial: Hello SDL3", 960, 540, 0);
+    mWindow = SDL_CreateWindow("SDL3 Tutorial: Hello SDL3", w, h, 0);
     if(mWindow == nullptr) {
         SDL_Log("Window could not be created! SDL error: %s\n", SDL_GetError());
         return false;
@@ -122,7 +122,7 @@ void Engine::updateEngine()
     }
 
     // The difference in ticks since the last frame, converted to seconds
-    mDeltaTime = (SDL_GetTicks() - mMsPrevFrame) / 1000.0;
+    mDeltaTime = static_cast<float>((SDL_GetTicks() - mMsPrevFrame) / 1000.0);
 
     // Store how many ms a whole frame took
     mMsPerFrame = static_cast<int>(SDL_GetTicks() - mMsPrevFrame);

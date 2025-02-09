@@ -34,6 +34,8 @@ public:
     static SpriteManager mSpr;
 	static UIManager mUI;
 
+    static float mDeltaTime;
+
 private:
 
     static void updateEngine(); // called from loopEngine() in Engine.cpp
@@ -48,7 +50,6 @@ private:
     static int mTargetMsPerFrame;
     static int mTimeToWait;
     static int mMsPerFrame;
-    static double mDeltaTime;
     static double mFps;
     static int mMsPrevFrame;
 
