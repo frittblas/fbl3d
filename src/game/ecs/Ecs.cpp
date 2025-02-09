@@ -21,4 +21,5 @@ Ecs::Ecs()
 
 Ecs::~Ecs()
 {
+    delete mSpriteSys;
 }

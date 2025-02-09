@@ -56,7 +56,7 @@ bool Engine::initEngine(int w, int h, int fps)
         return false;
     }
 
-    mWindow = SDL_CreateWindow("SDL3 Tutorial: Hello SDL3", w, h, 0);
+    mWindow = SDL_CreateWindow("Rock Band Manager", w, h, 0);
     if(mWindow == nullptr) {
         SDL_Log("Window could not be created! SDL error: %s\n", SDL_GetError());
         return false;
@@ -118,7 +118,7 @@ void Engine::updateEngine()
     mTimeToWait = static_cast<int>(mTargetMsPerFrame - (SDL_GetTicks() - mMsPrevFrame));
     if (mTimeToWait > 0 && mTimeToWait <= mTargetMsPerFrame) {
         SDL_Delay(mTimeToWait);
-        //SDL_DelayPrecise(670);
+        //SDL_DelayPrecise(50);
     }
 
     // The difference in ticks since the last frame, converted to seconds

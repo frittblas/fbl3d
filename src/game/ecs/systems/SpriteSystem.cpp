@@ -22,11 +22,11 @@ SpriteSystem::SpriteSystem(ecs::World& w)
     int sys1_cnt = 0;
 
     mSpriteSys = new ecs::SystemBuilder(w.system()
-        // System considers all entities with Position and Velocity components.
+        // System considers all entities with Position, Velocity and Sprite components.
         // Position is mutable.
-        .all<PosComp&, SpriteComp>()
+        .all<PosComp&, VelComp, SpriteComp>()
         // Logic to execute every time the system is invoked.
-        .on_each([&sys1_cnt](PosComp& p, const VelComp& v, const SpriteComp& s) {
+        .on_each([this](PosComp& p, const VelComp& v, const SpriteComp& s) {
 
             p.x += v.x * Engine::mDeltaTime;
             p.y += v.y * Engine::mDeltaTime;
@@ -34,9 +34,9 @@ SpriteSystem::SpriteSystem(ecs::World& w)
             Engine::mSpr.get(s.spriteId).dst.x = p.x;
             Engine::mSpr.get(s.spriteId).dst.y = p.y;
 
-            }));
+            this->mSpriteSysCounter++;
 
-    mSpriteSysCounter = sys1_cnt;
+            }));
 
     mSpriteSysEntity = mSpriteSys->entity();
 

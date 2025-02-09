@@ -40,6 +40,6 @@ private:
     bool init();
     void exit();
 
-    ecs::Entity mPlayer;
+    ecs::Entity mPlayer, mPlayer2;
 
 };

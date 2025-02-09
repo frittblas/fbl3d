@@ -22,8 +22,8 @@ Game::Game()
 
 Game::~Game()
 {
-	Engine::log("Game destroyed!");
 	exit();
+	Engine::log("Game destroyed!");
 }
 
 bool Game::init()
@@ -38,9 +38,16 @@ bool Game::init()
 	mEcs->mWorld.add<VelComp>(mPlayer, { 20, 20 });
 	mEcs->mWorld.add<SpriteComp>(mPlayer, { 0, 0, 0, 100, 100 });
 
+	ecs::Entity mPlayer2 = mEcs->mWorld.add();
+	mEcs->mWorld.add<PosComp>(mPlayer2, { 800, 0 });
+	mEcs->mWorld.add<VelComp>(mPlayer2, { 20, 20 });
+	mEcs->mWorld.add<SpriteComp>(mPlayer2, { 0, 0, 0, 100, 100 });
+
 	uint32_t id = Engine::mSpr.create(0, 0, 100, 100, 0);
+	uint32_t id2 = Engine::mSpr.create(100, 0, 100, 100, 0);
 
 	mEcs->mWorld.set<SpriteComp>(mPlayer) = { id, 0, 0, 100, 100 };
+	mEcs->mWorld.set<SpriteComp>(mPlayer2) = { id2, 0, 0, 100, 100 };
 
 	//auto& spr = mEcs->mWorld.get<SpriteComp>(mPlayer);
     //spr.spriteId = id;
