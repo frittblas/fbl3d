@@ -20,10 +20,12 @@ class SpriteSystem
 {
 
 public:
-    SpriteSystem();
+    SpriteSystem(ecs::World& w);
     ~SpriteSystem();
 
-
     ecs::SystemBuilder* mSpriteSys;
+    ecs::Entity mSpriteSysEntity;
+
+    int mSpriteSysCounter;
 
 };

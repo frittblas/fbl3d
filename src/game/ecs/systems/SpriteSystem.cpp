@@ -17,13 +17,11 @@
 #include "../components.h"
 #include "SpriteSystem.h"
 
-SpriteSystem::SpriteSystem()
+SpriteSystem::SpriteSystem(ecs::World& w)
 {
     int sys1_cnt = 0;
 
-    ecs::World mWorld1;
-
-    mSpriteSys = new ecs::SystemBuilder(mWorld1.system()
+    mSpriteSys = new ecs::SystemBuilder(w.system()
         // System considers all entities with Position and Velocity components.
         // Position is mutable.
         .all<PosComp&, SpriteComp>()
@@ -33,7 +31,15 @@ SpriteSystem::SpriteSystem()
             p.x += v.x * Engine::mDeltaTime;
             p.y += v.y * Engine::mDeltaTime;
 
+            Engine::mSpr.get(s.spriteId).dst.x = p.x;
+            Engine::mSpr.get(s.spriteId).dst.y = p.y;
+
             }));
+
+    mSpriteSysCounter = sys1_cnt;
+
+    mSpriteSysEntity = mSpriteSys->entity();
+
 }
 
 SpriteSystem::~SpriteSystem()

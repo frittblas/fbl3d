@@ -12,7 +12,7 @@
 
 #pragma once
 
-class Ecs;
+#include "Ecs/Ecs.h"
 
 class Game
 {
@@ -39,5 +39,7 @@ private:
 
     bool init();
     void exit();
+
+    ecs::Entity mPlayer;
 
 };

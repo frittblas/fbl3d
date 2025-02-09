@@ -14,10 +14,9 @@
 #include "Ecs.h"
 #include "components.h"
 
-//ecs::World Ecs::mWorld;
-
 Ecs::Ecs()
 {
+    mSpriteSys = new SpriteSystem(mWorld);
 }
 
 Ecs::~Ecs()

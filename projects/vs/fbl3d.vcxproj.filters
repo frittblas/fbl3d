@@ -143,9 +143,6 @@
     <ClInclude Include="..\..\src\game\Ecs\Ecs.h">
       <Filter>Source Files\game\Ecs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\game\Ecs\systems\MoveSystem.h">
-      <Filter>Source Files\game\Ecs\systems</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\game\Ecs\systems\SpriteSystem.h">
       <Filter>Source Files\game\Ecs\systems</Filter>
     </ClInclude>

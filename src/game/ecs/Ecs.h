@@ -25,7 +25,7 @@ public:
     Ecs();
     ~Ecs();
 
-    //static ecs::World mWorld;
+    ecs::World mWorld;
 
     SpriteSystem* mSpriteSys;
 

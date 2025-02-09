@@ -11,12 +11,13 @@
 */
 
 #include "../engine/Engine.h"
+#include "Ecs/components.h"
 #include "Game.h"
 
 Game::Game()
 {
-	Engine::log("Game created!");
 	init();
+	Engine::log("Game created!");
 }
 
 Game::~Game()
@@ -27,19 +28,36 @@ Game::~Game()
 
 bool Game::init()
 {
-	Engine::log("Game init!");
-	Engine::initEngine(1920, 1080, 120);
+	Engine::initEngine(1920, 1080, 60);
 	Engine::mSpr.loadTexture(Engine::mRenderer, "assets/spritesheet.bmp");
-	Engine::mSpr.create(0, 0, 100, 100, 0);
+
+    mEcs = new Ecs();
+
+	ecs::Entity mPlayer = mEcs->mWorld.add();
+	mEcs->mWorld.add<PosComp>(mPlayer, { 0, 0 });
+	mEcs->mWorld.add<VelComp>(mPlayer, { 20, 20 });
+	mEcs->mWorld.add<SpriteComp>(mPlayer, { 0, 0, 0, 100, 100 });
+
+	uint32_t id = Engine::mSpr.create(0, 0, 100, 100, 0);
+
+	mEcs->mWorld.set<SpriteComp>(mPlayer) = { id, 0, 0, 100, 100 };
+
+	//auto& spr = mEcs->mWorld.get<SpriteComp>(mPlayer);
+    //spr.spriteId = id;
+
 	return true;
 }
 
 void Game::update()
 {
-	Engine::mSpr.get(0).dst.x += 10.0f * Engine::mDeltaTime;
-	Engine::mSpr.get(0).dst.y += 10.0f * Engine::mDeltaTime;
+
+    mEcs->mWorld.update();
+
 }
 
 void Game::exit()
 {
+
+    delete mEcs;
+
 }

@@ -57,6 +57,7 @@ bool SpriteManager::loadTexture(SDL_Renderer* renderer, const char* path)
 
 uint32_t SpriteManager::create(int x, int y, int w, int h, uint8_t layer)
 {
+	/*
 	Sprite spr;
 	spr.src.x = static_cast<float>(x);
 	spr.src.y = static_cast<float>(y);
@@ -67,6 +68,13 @@ uint32_t SpriteManager::create(int x, int y, int w, int h, uint8_t layer)
 	spr.dst.y = 0;
 	spr.dst.w = spr.src.w;
 	spr.dst.h = spr.src.h;
+	*/
+	Sprite spr{
+	{static_cast<float>(x), static_cast<float>(y), static_cast<float>(w), static_cast<float>(h)}, // src
+	{0, 0, static_cast<float>(w), static_cast<float>(h)}, // dst
+	layer
+	};
+
 	mSpriteList.push_back(spr);
 	mIdToIndexMap[mNextSpriteId] = mSpriteList.size() - 1; //map id to index
 	return mNextSpriteId++;
