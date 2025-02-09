@@ -1,6 +1,40 @@
 Todo for fbl3:
 
-ImGui - in progress..
-gaia ecs - in progress
+-----
 
-Sprite sorting
+ImGui - working great! in more progress..
+gaia ecs - working great! in more progress..
+
+Sprite sorting - not a problem
+
+-----
+
+Think about how systems should work (1 system per quirk? no..)
+
+-----
+
+Think about all other systems (character creation, recruit, drg, record, summarize)
+Biorythm :)
+
+-----
+
+Think about how to structure game-events:
+
+- 1 Lua script / 10 years in game
+- handful of c++ functions to call (sol?)
+- build dynamic gui + image + text
+
+-----
+
+To think about regarding gaia ecs:
+
+leverage da powa!
+
+- queries
+- use the turn off/on on entities and systems
+- use world.update()
+
+make helper functions for ex. initiating entities
+
+Make a bulletproof serializer! So you can save and load complete
+game state anywhere anytime (keep all game data in component arrays)
