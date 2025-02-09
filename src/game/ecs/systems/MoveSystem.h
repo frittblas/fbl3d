@@ -2,7 +2,7 @@
 *
 *	fbl3d
 *
-*	Move.h
+*	SpriteSystem.cpp
 *
 *	The move ECS system.
 *

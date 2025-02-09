@@ -12,6 +12,8 @@
 
 #pragma once
 
+class Ecs;
+
 class Game
 {
 
@@ -21,6 +23,9 @@ public:
     ~Game();
 
     void update();
+
+    // pointers to all subsystems
+    Ecs* mEcs;
 
     // the game uses this internally
     static const int LogicalResW = 960;

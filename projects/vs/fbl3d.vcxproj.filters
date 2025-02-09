@@ -40,10 +40,10 @@
     <Filter Include="Source Files\vendor\common\ImGui">
       <UniqueIdentifier>{8023bc0d-a7be-48b3-b888-3adaa1908e67}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\game\ecs">
+    <Filter Include="Source Files\game\Ecs">
       <UniqueIdentifier>{8d04be56-fa5e-4a3d-99dd-58312f305549}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\game\ecs\systems">
+    <Filter Include="Source Files\game\Ecs\systems">
       <UniqueIdentifier>{c32fd53c-ed03-4dce-9236-55d837ed6611}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -87,6 +87,12 @@
     <ClCompile Include="..\..\src\vendor\common\ImGui\imgui_widgets.cpp">
       <Filter>Source Files\vendor\common\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\Ecs\Ecs.cpp">
+      <Filter>Source Files\game\Ecs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\Ecs\systems\SpriteSystem.cpp">
+      <Filter>Source Files\game\Ecs\systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\engine\Engine.h">
@@ -129,13 +135,19 @@
       <Filter>Source Files\vendor\common\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\ecs\gaia.h">
-      <Filter>Source Files\game\ecs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\game\ecs\systems\move.h">
-      <Filter>Source Files\game\ecs\systems</Filter>
+      <Filter>Source Files\game\Ecs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\ecs\components.h">
-      <Filter>Source Files\game\ecs</Filter>
+      <Filter>Source Files\game\Ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Ecs\Ecs.h">
+      <Filter>Source Files\game\Ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Ecs\systems\MoveSystem.h">
+      <Filter>Source Files\game\Ecs\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\Ecs\systems\SpriteSystem.h">
+      <Filter>Source Files\game\Ecs\systems</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
