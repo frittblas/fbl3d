@@ -12,10 +12,8 @@
 
 #pragma once
 
-#include <gaia/gaia.h>
+#include <entt/entt.hpp>
 #include "systems/SpriteSystem.h"
-
-using namespace gaia;
 
 class Ecs
 {
@@ -25,7 +23,7 @@ public:
     Ecs();
     ~Ecs();
 
-    ecs::World mWorld;
+    entt::registry mReg;
 
     SpriteSystem* mSpriteSys;
 

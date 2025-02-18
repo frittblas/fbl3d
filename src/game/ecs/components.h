@@ -24,7 +24,7 @@ struct VelComp
 
 struct SpriteComp
 {
-    uint32_t spriteId;
-	uint16_t texX, texY; // where on the sheet is the sprite located?
-	uint16_t w, h;
+    int spriteId;
+	int texX, texY; // where on the sheet is the sprite located?
+	int w, h;
 };

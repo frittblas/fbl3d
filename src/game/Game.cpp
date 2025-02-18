@@ -33,24 +33,17 @@ bool Game::init()
 
     mEcs = new Ecs();
 
-	ecs::Entity mPlayer = mEcs->mWorld.add();
-	mEcs->mWorld.add<PosComp>(mPlayer, { 0, 0 });
-	mEcs->mWorld.add<VelComp>(mPlayer, { 20, 20 });
-	mEcs->mWorld.add<SpriteComp>(mPlayer, { 0, 0, 0, 100, 100 });
+	mPlayer = mEcs->mReg.create();
+	mEcs->mReg.emplace<PosComp>(mPlayer, 10.0f, 10.0f);
+	mEcs->mReg.emplace<SpriteComp>(mPlayer, 0, 0, 0, 100, 100);
+	mEcs->mReg.emplace<VelComp>(mPlayer, 20.0f, 20.0f);
 
-	ecs::Entity mPlayer2 = mEcs->mWorld.add();
-	mEcs->mWorld.add<PosComp>(mPlayer2, { 800, 0 });
-	mEcs->mWorld.add<VelComp>(mPlayer2, { 20, 20 });
-	mEcs->mWorld.add<SpriteComp>(mPlayer2, { 0, 0, 0, 100, 100 });
+	mPlayer2 = mEcs->mReg.create();
+	mEcs->mReg.emplace<PosComp>(mPlayer2, 500.0f, 10.0f);
+	mEcs->mReg.emplace<SpriteComp>(mPlayer2, 0, 100, 0, 100, 100);
+	mEcs->mReg.emplace<VelComp>(mPlayer2, 20.0f, 20.0f);
 
-	uint32_t id = Engine::mSpr.create(0, 0, 100, 100, 0);
-	uint32_t id2 = Engine::mSpr.create(100, 0, 100, 100, 0);
-
-	mEcs->mWorld.set<SpriteComp>(mPlayer) = { id, 0, 0, 100, 100 };
-	mEcs->mWorld.set<SpriteComp>(mPlayer2) = { id2, 0, 0, 100, 100 };
-
-	//auto& spr = mEcs->mWorld.get<SpriteComp>(mPlayer);
-    //spr.spriteId = id;
+    mEcs->mSpriteSys->init();
 
 	return true;
 }
@@ -58,7 +51,7 @@ bool Game::init()
 void Game::update()
 {
 
-    mEcs->mWorld.update();
+    mEcs->mSpriteSys->update();
 
 }
 

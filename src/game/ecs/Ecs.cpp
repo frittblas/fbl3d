@@ -16,7 +16,7 @@
 
 Ecs::Ecs()
 {
-    mSpriteSys = new SpriteSystem(mWorld);
+    mSpriteSys = new SpriteSystem(mReg);
 }
 
 Ecs::~Ecs()

@@ -13,35 +13,34 @@
 #pragma once
 
 #include "../../engine/Engine.h"
-#include "../Ecs.h"
 #include "../components.h"
 #include "SpriteSystem.h"
 
-SpriteSystem::SpriteSystem(ecs::World& w)
+void SpriteSystem::init()
 {
-    int sys1_cnt = 0;
+    auto view = mReg.view<PosComp, SpriteComp, VelComp>();
 
-    mSpriteSys = new ecs::SystemBuilder(w.system()
-        // System considers all entities with Position, Velocity and Sprite components.
-        // Position is mutable.
-        .all<PosComp&, VelComp, SpriteComp>()
-        // Logic to execute every time the system is invoked.
-        .on_each([this](PosComp& p, const VelComp& v, const SpriteComp& s) {
-
-            p.x += v.x * Engine::mDeltaTime;
-            p.y += v.y * Engine::mDeltaTime;
-
-            Engine::mSpr.get(s.spriteId).dst.x = p.x;
-            Engine::mSpr.get(s.spriteId).dst.y = p.y;
-
-            this->mSpriteSysCounter++;
-
-            }));
-
-    mSpriteSysEntity = mSpriteSys->entity();
+    view.each([](const entt::entity entity, const PosComp& pos, SpriteComp& spr, const VelComp& vel) {
+        
+        spr.spriteId = Engine::mSpr.create(spr.texX, spr.texY, spr.w, spr.h, 0);
+        
+        });
 
 }
 
-SpriteSystem::~SpriteSystem()
+void SpriteSystem::update()
 {
+
+    auto view = mReg.view<PosComp, SpriteComp, VelComp>();
+
+    view.each([](const entt::entity entity, PosComp& pos, const SpriteComp& spr, const VelComp& vel) {
+
+        pos.x += vel.x * Engine::mDeltaTime;
+        pos.y += vel.y * Engine::mDeltaTime;
+
+        Engine::mSpr.get(spr.spriteId).dst.x = pos.x;
+        Engine::mSpr.get(spr.spriteId).dst.y = pos.y;
+
+        });
+
 }

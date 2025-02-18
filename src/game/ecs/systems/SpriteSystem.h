@@ -12,20 +12,17 @@
 
 #pragma once
 
-#include <gaia/gaia.h>
-
-using namespace gaia;
+#include <entt/entt.hpp>
 
 class SpriteSystem
 {
 
 public:
-    SpriteSystem(ecs::World& w);
-    ~SpriteSystem();
+    SpriteSystem(entt::registry& reg) : mReg(reg) {}
+    void init();
+    void update();
 
-    ecs::SystemBuilder* mSpriteSys;
-    ecs::Entity mSpriteSysEntity;
-
-    int mSpriteSysCounter;
+private:
+    entt::registry& mReg;
 
 };
