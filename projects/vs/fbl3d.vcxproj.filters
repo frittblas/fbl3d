@@ -46,6 +46,15 @@
     <Filter Include="Source Files\game\Ecs\systems">
       <UniqueIdentifier>{c32fd53c-ed03-4dce-9236-55d837ed6611}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\game\GameState">
+      <UniqueIdentifier>{56b49f94-bcf6-4bf7-acdb-71b67f4300bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\core">
+      <UniqueIdentifier>{b199fefd-f05a-4cce-882d-8670d2d77dda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\GameState\states">
+      <UniqueIdentifier>{c09f9cc7-2d82-4ceb-b353-a12d7387fc7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\engine\Engine.cpp">
@@ -93,6 +102,21 @@
     <ClCompile Include="..\..\src\game\Ecs\systems\SpriteSystem.cpp">
       <Filter>Source Files\game\Ecs\systems</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\core\UserInput.cpp">
+      <Filter>Source Files\game\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\GameState\GameState.cpp">
+      <Filter>Source Files\game\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\GameState\states\Settings.cpp">
+      <Filter>Source Files\game\GameState\states</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\GameState\states\Title.cpp">
+      <Filter>Source Files\game\GameState\states</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\GameState\states\Setup.cpp">
+      <Filter>Source Files\game\GameState\states</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\engine\Engine.h">
@@ -134,9 +158,6 @@
     <ClInclude Include="..\..\src\vendor\common\ImGui\imstb_truetype.h">
       <Filter>Source Files\vendor\common\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\game\ecs\gaia.h">
-      <Filter>Source Files\game\Ecs</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\game\ecs\components.h">
       <Filter>Source Files\game\Ecs</Filter>
     </ClInclude>
@@ -145,6 +166,24 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\Ecs\systems\SpriteSystem.h">
       <Filter>Source Files\game\Ecs\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\core\UserInput.h">
+      <Filter>Source Files\game\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\GameState\GameState.h">
+      <Filter>Source Files\game\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\GameState\IState.h">
+      <Filter>Source Files\game\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\GameState\states\Settings.h">
+      <Filter>Source Files\game\GameState\states</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\GameState\states\Title.h">
+      <Filter>Source Files\game\GameState\states</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\GameState\states\Setup.h">
+      <Filter>Source Files\game\GameState\states</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

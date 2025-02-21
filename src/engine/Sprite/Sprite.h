@@ -34,7 +34,7 @@ public:
     ~SpriteManager();
 	
 	bool loadTexture(SDL_Renderer* renderer, const char* path);
-	uint32_t create(int x, int y, int w, int h, uint8_t layer);
+	uint32_t create(float x, float y, float w, float h, uint8_t layer);
 	Sprite& get(uint32_t id);
 	void sort();
 	void clearAll();

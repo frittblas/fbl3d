@@ -12,8 +12,6 @@
 */
 
 #include "Engine.h"
-#include "Sprite/Sprite.h"
-#include "UI/UI.h"
 #include <SDL3/SDL.h>
 
 // definitions
@@ -29,7 +27,7 @@ int Engine::mTargetFps;
 int Engine::mTargetMsPerFrame;
 int Engine::mTimeToWait;
 int Engine::mMsPrevFrame;
-float Engine::mDeltaTime;
+float Engine::mDeltaTime;   // public
 double Engine::mFps;
 int Engine::mMsPerFrame;
 

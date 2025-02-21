@@ -16,6 +16,8 @@
 #include "Sprite/Sprite.h"
 #include "UI/UI.h"
 
+#include <cstdlib>
+
 class Engine
 {
 

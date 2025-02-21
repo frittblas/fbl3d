@@ -13,10 +13,11 @@
 #include "../engine/Engine.h"
 #include "Game.h"
 
-Game* gGame;
+static Game* gGame;
 
 void Engine::initGame() {
 
+	Engine::initEngine(1920, 1080, 60);
 	gGame = new Game();
 
 }

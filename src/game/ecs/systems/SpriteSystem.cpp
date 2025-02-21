@@ -22,7 +22,7 @@ void SpriteSystem::init()
 
     view.each([](const entt::entity entity, const PosComp& pos, SpriteComp& spr, const VelComp& vel) {
         
-        spr.spriteId = Engine::mSpr.create(spr.texX, spr.texY, spr.w, spr.h, 0);
+        spr.spriteId = Engine::mSpr.create(spr.x, spr.y, spr.w, spr.h, 0);
         
         });
 

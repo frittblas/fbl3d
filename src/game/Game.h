@@ -12,7 +12,9 @@
 
 #pragma once
 
-#include "Ecs/Ecs.h"
+class Ecs;
+class GameState;
+class UserInput;
 
 class Game
 {
@@ -26,6 +28,8 @@ public:
 
     // pointers to all subsystems
     Ecs* mEcs;
+    GameState* mState;
+    UserInput* mInput;
 
     // the game uses this internally
     static const int LogicalResW = 960;
@@ -39,7 +43,5 @@ private:
 
     bool init();
     void exit();
-
-    entt::entity mPlayer, mPlayer2;
 
 };
