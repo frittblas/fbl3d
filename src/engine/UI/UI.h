@@ -27,18 +27,18 @@ enum class UIType : uint8_t { TEXT_LABEL, BUTTON, CHECKBOX };
 
 struct UIElement {
     uint8_t id;
+    bool active;
     UIType type;
     float x, y;
-    bool active;
     std::string text;
     std::function<void()> callback;
 };
 
 struct UIWindow {
     uint8_t id;
+    bool active;
     std::string title;
     std::vector<UIElement> uiElements;
-    bool active;
 };
 
 class UIManager
@@ -60,7 +60,6 @@ private:
 
 	void init(SDL_Window* window, SDL_Renderer* renderer);
 	void update();
-    void update2();
 	void processEvent(SDL_Event* e);
 	void render(SDL_Renderer* renderer);
 	void exit();

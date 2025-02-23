@@ -64,7 +64,7 @@ bool Game::init()
 	int i2 = Engine::mUI.createElement(UIType::CHECKBOX, 300, 200, "mr checkbox2", nullptr);
 	int id22 = Engine::mUI.createElement(UIType::TEXT_LABEL, 200, 200, "Testing longer string2", nullptr);
 	int id11 = Engine::mUI.createElement(UIType::BUTTON, 100, 200, "Hej222222222222", test);
-	int id23 = Engine::mUI.createElement(UIType::BUTTON, 300, 200, "Hej2333333333", test);
+	int id23 = Engine::mUI.createElement(UIType::BUTTON, 350, 250, "Hej2333333333", test);
 	int id3 = Engine::mUI.createWindow("Babys first window.");
     Engine::mUI.addElementToWindow(id3, id2);
 	Engine::mUI.addElementToWindow(id3, id22);

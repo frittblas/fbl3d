@@ -21,12 +21,12 @@ ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
 UIManager::UIManager()
 {
-	std::cout << "Initialized UI subsystem." << std::endl;
+
 }
 
 UIManager::~UIManager()
 {
-	std::cout << "Destroyed UI subsystem." << std::endl;
+
 }
 
 
@@ -42,7 +42,7 @@ void UIManager::init(SDL_Window* window, SDL_Renderer* renderer)
     ImFont* myFont = mIo->Fonts->AddFontFromFileTTF("assets/font/garamond.ttf", 30.0f);
 
     if (myFont == nullptr) {
-        // Handle font loading error
+        // NOTE: Handle font loading error nicer, return something
         std::cerr << "Failed to load font!" << std::endl;
     }
 
@@ -98,14 +98,14 @@ void UIManager::init(SDL_Window* window, SDL_Renderer* renderer)
 
 uint8_t UIManager::createElement(UIType type, float x, float y, const std::string& text, std::function<void()> callback)
 {
-    UIElement elem = { mNextElementId++, type, x, y, true, text, callback };
+    UIElement elem = { mNextElementId++, true, type, x, y, text, callback };
     mUIElements.push_back(elem);
     return elem.id;
 }
 
 uint8_t UIManager::createWindow(const std::string& title)
 {
-    UIWindow window = { mNextWindowId++, title, {}, true };
+    UIWindow window = { mNextWindowId++, true, title, {} };
     mWindows[window.id] = window;
     return window.id;
 }
@@ -169,28 +169,24 @@ void UIManager::update() {
         if (!elem.active) continue;
 
         ImVec2 size = ImGui::CalcTextSize(elem.text.c_str());
-        ImGui::SetNextWindowPos(ImVec2(elem.x, elem.y));
         size.x += 18;
         size.y += 16;
         ImGui::SetNextWindowSize(size);
+        ImGui::SetNextWindowPos(ImVec2(elem.x, elem.y));
 
         switch (elem.type) {
         case UIType::TEXT_LABEL:
         {
-
-            ImGui::Begin(("txtWind_" + std::to_string(elem.id)).c_str(), nullptr, ImGuiWindowFlags_NoDecoration);
+            ImGui::Begin(("txtWind_" + std::to_string(elem.id)).c_str(), nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs);
             ImGui::SetCursorPos(ImVec2(5, 5)); // center button inside the window
-
             ImGui::Text("%s", elem.text.c_str());
             ImGui::End();
         }
         break;
         case UIType::BUTTON:
         {
-
             ImGui::Begin(("btnWind_" + std::to_string(elem.id)).c_str(), nullptr, ImGuiWindowFlags_NoDecoration);
             ImGui::SetCursorPos(ImVec2(5, 5));
-
             if (ImGui::Button(elem.text.c_str())) {
                 if (elem.callback) elem.callback();
             }
@@ -219,55 +215,16 @@ void UIManager::update() {
             case UIType::CHECKBOX:
                 static bool checkboxState = false;
                 ImGui::Checkbox(elem.text.c_str(), &checkboxState);
+                //ImGui::SameLine();
                 break;
             }
         }
         ImGui::End();
     }
 
-}
-
-void UIManager::update2()
-{
-	ImGui_ImplSDLRenderer3_NewFrame();
-	ImGui_ImplSDL3_NewFrame();
-	ImGui::NewFrame();
-
-    if (show_demo_window)
-        ImGui::ShowDemoWindow(&show_demo_window);
-
-    // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
-    {
-        static float f = 0.0f;
-        static int counter = 0;
-
-        ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
-
-        ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-        ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-        ImGui::Checkbox("Another Window", &show_another_window);
-
-        ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-        ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-
-        if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-            counter++;
-        ImGui::SameLine();
-        ImGui::Text("counter = %d", counter);
-
-        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / mIo->Framerate, mIo->Framerate);
-        ImGui::End();
-    }
-
-    // 3. Show another simple window.
-    if (show_another_window)
-    {
-        ImGui::Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-        ImGui::Text("Hello from another window!");
-        if (ImGui::Button("Close Me"))
-            show_another_window = false;
-        ImGui::End();
-    }
+    ImGui::Begin("Fps");
+    ImGui::Text("App average: %.3f ms/frame (%.1f FPS)", 1000.0f / mIo->Framerate, mIo->Framerate);
+    ImGui::End();
 
 }
 

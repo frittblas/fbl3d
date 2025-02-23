@@ -18,14 +18,12 @@
 SpriteManager::SpriteManager()
 {
 	mNextSpriteId = 0;
-	std::cout << "Initialized Sprite subsystem." << std::endl;
 }
 
 SpriteManager::~SpriteManager()
 {
 	clearAll();
 	SDL_DestroyTexture(mTexture);
-	std::cout << "Destroyed Sprite subsystem." << std::endl;
 }
 
 bool SpriteManager::loadTexture(SDL_Renderer* renderer, const char* path)
