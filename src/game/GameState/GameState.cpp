@@ -33,7 +33,6 @@ void GameState::change(Game& g, StateType newState)
 	delete mCurrentStateInstance;	// delete the current state instance, calling the correct destructor
 
 	// then set the new state and allocate resources for the new state
-
 	switch (newState) {
 
 		case StateType::Title:
@@ -47,7 +46,6 @@ void GameState::change(Game& g, StateType newState)
 			break;
 	}
 
-	// finally set the new state
 	mState = newState;
 }
 

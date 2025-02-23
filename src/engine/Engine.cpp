@@ -66,8 +66,6 @@ bool Engine::initEngine(int w, int h, int fps)
 		return false;
     }
 
-    SDL_Log("SDL3 working! :)\n");
-
     // ImGui
 	mUI.init(mWindow, mRenderer);
 
@@ -76,6 +74,8 @@ bool Engine::initEngine(int w, int h, int fps)
 
 	mLogMessages = true;
     mQuit = false;
+
+    SDL_Log("fbl3d started! :)\n");
 
     return true;
 

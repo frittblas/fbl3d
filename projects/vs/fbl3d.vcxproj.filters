@@ -13,11 +13,29 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\engine">
-      <UniqueIdentifier>{53c0f137-5d8e-4dae-8831-c7f00307bf1e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\game">
       <UniqueIdentifier>{101ab328-e79c-40fd-b326-563660ef13cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\vendor">
+      <UniqueIdentifier>{aa7c298f-9826-4a1e-82c8-0afd1f252277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\vendor\common">
+      <UniqueIdentifier>{1c2dbcbd-86c4-4ac2-a1c4-d75f0a9d9d3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\vendor\common\ImGui">
+      <UniqueIdentifier>{8023bc0d-a7be-48b3-b888-3adaa1908e67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\GameState">
+      <UniqueIdentifier>{56b49f94-bcf6-4bf7-acdb-71b67f4300bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\core">
+      <UniqueIdentifier>{b199fefd-f05a-4cce-882d-8670d2d77dda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\GameState\states">
+      <UniqueIdentifier>{c09f9cc7-2d82-4ceb-b353-a12d7387fc7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine">
+      <UniqueIdentifier>{53c0f137-5d8e-4dae-8831-c7f00307bf1e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\engine\Assets">
       <UniqueIdentifier>{a19a2bcc-1665-4c5f-8210-adab14e2d11e}</UniqueIdentifier>
@@ -31,29 +49,11 @@
     <Filter Include="Source Files\engine\UI">
       <UniqueIdentifier>{3fbab1eb-45ab-48cd-8b29-17acc7b7630c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\vendor">
-      <UniqueIdentifier>{aa7c298f-9826-4a1e-82c8-0afd1f252277}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\vendor\common">
-      <UniqueIdentifier>{1c2dbcbd-86c4-4ac2-a1c4-d75f0a9d9d3b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\vendor\common\ImGui">
-      <UniqueIdentifier>{8023bc0d-a7be-48b3-b888-3adaa1908e67}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\game\Ecs">
+    <Filter Include="Source Files\game\ecs">
       <UniqueIdentifier>{8d04be56-fa5e-4a3d-99dd-58312f305549}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\game\Ecs\systems">
+    <Filter Include="Source Files\game\ecs\systems">
       <UniqueIdentifier>{c32fd53c-ed03-4dce-9236-55d837ed6611}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\game\GameState">
-      <UniqueIdentifier>{56b49f94-bcf6-4bf7-acdb-71b67f4300bf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\game\core">
-      <UniqueIdentifier>{b199fefd-f05a-4cce-882d-8670d2d77dda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\game\GameState\states">
-      <UniqueIdentifier>{c09f9cc7-2d82-4ceb-b353-a12d7387fc7c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -97,10 +97,10 @@
       <Filter>Source Files\vendor\common\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\Ecs\Ecs.cpp">
-      <Filter>Source Files\game\Ecs</Filter>
+      <Filter>Source Files\game\ecs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\Ecs\systems\SpriteSystem.cpp">
-      <Filter>Source Files\game\Ecs\systems</Filter>
+      <Filter>Source Files\game\ecs\systems</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\core\UserInput.cpp">
       <Filter>Source Files\game\core</Filter>
@@ -159,13 +159,13 @@
       <Filter>Source Files\vendor\common\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\ecs\components.h">
-      <Filter>Source Files\game\Ecs</Filter>
+      <Filter>Source Files\game\ecs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\Ecs\Ecs.h">
-      <Filter>Source Files\game\Ecs</Filter>
+      <Filter>Source Files\game\ecs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\Ecs\systems\SpriteSystem.h">
-      <Filter>Source Files\game\Ecs\systems</Filter>
+      <Filter>Source Files\game\ecs\systems</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\core\UserInput.h">
       <Filter>Source Files\game\core</Filter>

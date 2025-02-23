@@ -36,11 +36,15 @@ leverage da powa!
 
 make helper functions for ex. initiating entities
 
+Switch from gaia to entt - done!
+
 Make a bulletproof serializer! So you can save and load complete
 game state anywhere anytime (keep all game data in component arrays)
 
 Rename/move folders:
 engine->Engine
 game->Game
-vendor->vs should be vendor->lib->vs (and contain the lib files only.)
-SDL3 headers should be in vendor->include->SDL3 (rename common to include as all includes are common)
+
+GameStates - done!
+
+Make title screen with imgui text -> click to start -> setup state.
