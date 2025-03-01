@@ -117,6 +117,9 @@
     <ClCompile Include="..\..\src\game\GameState\states\Setup.cpp">
       <Filter>Source Files\game\GameState\states</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\core\GUI.cpp">
+      <Filter>Source Files\game\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\engine\Engine.h">
@@ -184,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\GameState\states\Setup.h">
       <Filter>Source Files\game\GameState\states</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\core\GUI.h">
+      <Filter>Source Files\game\core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

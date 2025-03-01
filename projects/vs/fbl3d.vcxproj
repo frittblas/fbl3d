@@ -142,6 +142,7 @@
     <ClCompile Include="..\..\src\engine\Engine.cpp" />
     <ClCompile Include="..\..\src\engine\Sprite\Sprite.cpp" />
     <ClCompile Include="..\..\src\engine\UI\UI.cpp" />
+    <ClCompile Include="..\..\src\game\core\GUI.cpp" />
     <ClCompile Include="..\..\src\game\core\UserInput.cpp" />
     <ClCompile Include="..\..\src\game\Ecs\Ecs.cpp" />
     <ClCompile Include="..\..\src\game\Ecs\systems\SpriteSystem.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="..\..\src\engine\Engine.h" />
     <ClInclude Include="..\..\src\engine\Sprite\Sprite.h" />
     <ClInclude Include="..\..\src\engine\UI\UI.h" />
+    <ClInclude Include="..\..\src\game\core\GUI.h" />
     <ClInclude Include="..\..\src\game\core\UserInput.h" />
     <ClInclude Include="..\..\src\game\ecs\components.h" />
     <ClInclude Include="..\..\src\game\Ecs\Ecs.h" />

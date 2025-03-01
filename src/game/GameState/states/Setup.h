@@ -23,6 +23,11 @@ public:
     Setup();
     ~Setup();
 
+    void init(Game& g);
+
     virtual void tick(Game& g) override;
+
+private:
+
 
 };

@@ -19,8 +19,8 @@
 
 GameState::GameState()
 {
-	mState = StateType::Setup;
-	mCurrentStateInstance = new Setup();	// Start by default on title screen
+	mState = StateType::Title;
+	mCurrentStateInstance = new Title();	// Start by default on title screen
 }
 
 GameState::~GameState()
@@ -36,10 +36,14 @@ void GameState::change(Game& g, StateType newState)
 	switch (newState) {
 
 		case StateType::Title:
-			if (mState == StateType::Setup) {	// if coming from Setup state
-				toTitle(g);
-			}
 			mCurrentStateInstance = new Title();
+			break;
+		case StateType::Setup:
+			{
+				Setup* s = new Setup();
+				if (mState == StateType::Title) s->init(g);	// call the init function for new game init
+                mCurrentStateInstance = s;
+			}
 			break;
 		case StateType::Settings:
 			mCurrentStateInstance = new Settings();

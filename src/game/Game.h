@@ -15,6 +15,7 @@
 class Ecs;
 class GameState;
 class UserInput;
+class GUI;
 
 class Game
 {
@@ -30,10 +31,11 @@ public:
     Ecs* mEcs;
     GameState* mState;
     UserInput* mInput;
+    GUI* mGui;
 
     // the game uses this internally
-    static const int LogicalResW = 960;
-    static const int LogicalResH = 540;
+    static const int LogicalResW = 1920;
+    static const int LogicalResH = 1080;
 
     // real resolution of each device
     static const int DeviceResW = LogicalResW;

@@ -17,7 +17,7 @@ static Game* gGame;
 
 void Engine::initGame() {
 
-	Engine::initEngine(1920, 1080, 60);
+	Engine::initEngine(Game::DeviceResW, Game::DeviceResH, 60);
 	gGame = new Game();
 
 }
