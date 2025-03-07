@@ -2,7 +2,7 @@
 *
 *	Rock band manager
 *
-*	GUI.hpp
+*	GUI.h
 *
 *	GUI class header, takes care of all UI elements and callbacks etc.
 *

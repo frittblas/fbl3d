@@ -10,9 +10,9 @@
 *
 */
 
-#include "../../../engine/Engine.h"
+#include "../../../Engine/Engine.h"
 #include "../../Game.h"
-#include "../../ecs/components.h"
+#include "../../Ecs/components.h"
 #include "../../Ecs/Ecs.h"
 #include "Setup.h"
 

@@ -2,7 +2,7 @@
 *
 *	Rock band manager
 *
-*	IState.hpp
+*	IState.h
 *
 *	State interface, all the game states implement this.
 *

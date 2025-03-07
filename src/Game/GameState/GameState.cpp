@@ -2,7 +2,7 @@
 *
 *	Rock band manager
 *
-*	GameState.hpp
+*	GameState.cpp
 *
 *	GameState class header, FSM dealing with game states.
 *
@@ -10,7 +10,7 @@
 *
 */
 
-#include "../../engine/Engine.h"
+#include "../../Engine/Engine.h"
 #include "../Game.h"
 #include "GameState.h"
 #include "states/Title.h"

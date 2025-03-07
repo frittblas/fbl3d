@@ -2,7 +2,7 @@
 *
 *	Rock band manager
 *
-*	Setup.hpp
+*	Setup.h
 *
 *	Setup class header, takes care of the setup state.
 *

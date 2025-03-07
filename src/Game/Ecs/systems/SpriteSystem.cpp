@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include "../../engine/Engine.h"
+#include "../../Engine/Engine.h"
 #include "../components.h"
 #include "SpriteSystem.h"
 

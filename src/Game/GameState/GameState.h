@@ -2,7 +2,7 @@
 *
 *	Rock band manager
 *
-*	GameState.hpp
+*	GameState.h
 *
 *	GameState class header, FSM dealing with game states.
 *

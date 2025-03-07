@@ -2,7 +2,7 @@
 *
 *	Rock band manager
 *
-*	GUI.hpp
+*	GUI.cpp
 *
 *	GUI class implementation, takes care of all UI elements and callbacks etc.
 *
@@ -10,7 +10,7 @@
 *
 */
 
-#include "../../engine/Engine.h"
+#include "../../Engine/Engine.h"
 #include "../Game.h"
 #include "../GameState/GameState.h"
 #include "GUI.h"

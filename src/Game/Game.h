@@ -1,6 +1,6 @@
 /*
 *
-*	fbl3d
+*	Rock band manager
 *
 *	Game.h
 *

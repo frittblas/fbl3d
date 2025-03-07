@@ -2,7 +2,7 @@
 *
 *	fbl3d
 *
-*	Ecs.h
+*	Ecs.cpp
 *
 *	The Ecs manager class. Keeps track of systems etc
 *
@@ -10,7 +10,7 @@
 *
 */
 
-#include "../../engine/Engine.h"
+#include "../../Engine/Engine.h"
 #include "Ecs.h"
 #include "components.h"
 

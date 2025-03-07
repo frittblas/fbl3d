@@ -10,7 +10,7 @@
 *
 */
 
-#include "../../engine/Engine.h"
+#include "../../Engine/Engine.h"
 #include "UserInput.h"
 
 UserInput::UserInput()

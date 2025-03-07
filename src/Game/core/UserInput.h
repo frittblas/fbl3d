@@ -2,7 +2,7 @@
 *
 *	Rock band manager
 *
-*	UserInput.hpp
+*	UserInput.h
 *
 *	Input class header, takes care of all the user input.
 *

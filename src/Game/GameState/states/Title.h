@@ -2,7 +2,7 @@
 *
 *	Rock band manager
 *
-*	Title.hpp
+*	Title.h
 *
 *	Title class header, takes care of the title screen.
 *

@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\game">
-      <UniqueIdentifier>{101ab328-e79c-40fd-b326-563660ef13cd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\vendor">
       <UniqueIdentifier>{aa7c298f-9826-4a1e-82c8-0afd1f252277}</UniqueIdentifier>
     </Filter>
@@ -25,52 +22,49 @@
     <Filter Include="Source Files\vendor\common\ImGui">
       <UniqueIdentifier>{8023bc0d-a7be-48b3-b888-3adaa1908e67}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\game\GameState">
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{101ab328-e79c-40fd-b326-563660ef13cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\GameState">
       <UniqueIdentifier>{56b49f94-bcf6-4bf7-acdb-71b67f4300bf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\game\core">
-      <UniqueIdentifier>{b199fefd-f05a-4cce-882d-8670d2d77dda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\game\GameState\states">
+    <Filter Include="Source Files\Game\GameState\states">
       <UniqueIdentifier>{c09f9cc7-2d82-4ceb-b353-a12d7387fc7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\engine">
-      <UniqueIdentifier>{53c0f137-5d8e-4dae-8831-c7f00307bf1e}</UniqueIdentifier>
+    <Filter Include="Source Files\Game\core">
+      <UniqueIdentifier>{b199fefd-f05a-4cce-882d-8670d2d77dda}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\engine\Assets">
-      <UniqueIdentifier>{a19a2bcc-1665-4c5f-8210-adab14e2d11e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\Events">
-      <UniqueIdentifier>{76a3991d-fb28-44c3-8a1e-45f58665b134}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\Sprite">
-      <UniqueIdentifier>{74d8793e-6924-4183-b3b5-30cbc416c797}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\UI">
-      <UniqueIdentifier>{3fbab1eb-45ab-48cd-8b29-17acc7b7630c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\game\ecs">
+    <Filter Include="Source Files\Game\Ecs">
       <UniqueIdentifier>{8d04be56-fa5e-4a3d-99dd-58312f305549}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\game\ecs\systems">
+    <Filter Include="Source Files\Game\Ecs\systems">
       <UniqueIdentifier>{c32fd53c-ed03-4dce-9236-55d837ed6611}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{53c0f137-5d8e-4dae-8831-c7f00307bf1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Sprite">
+      <UniqueIdentifier>{74d8793e-6924-4183-b3b5-30cbc416c797}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\UI">
+      <UniqueIdentifier>{3fbab1eb-45ab-48cd-8b29-17acc7b7630c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\engine\Engine.cpp">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\engine\Sprite\Sprite.cpp">
-      <Filter>Source Files\engine\Sprite</Filter>
+      <Filter>Source Files\Engine\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\Entry.cpp">
-      <Filter>Source Files\game</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\Game.cpp">
-      <Filter>Source Files\game</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\engine\UI\UI.cpp">
-      <Filter>Source Files\engine\UI</Filter>
+      <Filter>Source Files\Engine\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\vendor\common\ImGui\imgui.cpp">
       <Filter>Source Files\vendor\common\ImGui</Filter>
@@ -97,42 +91,42 @@
       <Filter>Source Files\vendor\common\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\Ecs\Ecs.cpp">
-      <Filter>Source Files\game\ecs</Filter>
+      <Filter>Source Files\Game\Ecs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\Ecs\systems\SpriteSystem.cpp">
-      <Filter>Source Files\game\ecs\systems</Filter>
+      <Filter>Source Files\Game\Ecs\systems</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\core\UserInput.cpp">
-      <Filter>Source Files\game\core</Filter>
+      <Filter>Source Files\Game\core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\GameState\GameState.cpp">
-      <Filter>Source Files\game\GameState</Filter>
+      <Filter>Source Files\Game\GameState</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\GameState\states\Settings.cpp">
-      <Filter>Source Files\game\GameState\states</Filter>
+      <Filter>Source Files\Game\GameState\states</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\GameState\states\Title.cpp">
-      <Filter>Source Files\game\GameState\states</Filter>
+      <Filter>Source Files\Game\GameState\states</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\GameState\states\Setup.cpp">
-      <Filter>Source Files\game\GameState\states</Filter>
+      <Filter>Source Files\Game\GameState\states</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\game\core\GUI.cpp">
-      <Filter>Source Files\game\core</Filter>
+      <Filter>Source Files\Game\core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\engine\Engine.h">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\engine\Sprite\Sprite.h">
-      <Filter>Source Files\engine\Sprite</Filter>
+      <Filter>Source Files\Engine\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\Game.h">
-      <Filter>Source Files\game</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\engine\UI\UI.h">
-      <Filter>Source Files\engine\UI</Filter>
+      <Filter>Source Files\Engine\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\vendor\common\ImGui\imconfig.h">
       <Filter>Source Files\vendor\common\ImGui</Filter>
@@ -162,34 +156,34 @@
       <Filter>Source Files\vendor\common\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\ecs\components.h">
-      <Filter>Source Files\game\ecs</Filter>
+      <Filter>Source Files\Game\Ecs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\Ecs\Ecs.h">
-      <Filter>Source Files\game\ecs</Filter>
+      <Filter>Source Files\Game\Ecs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\Ecs\systems\SpriteSystem.h">
-      <Filter>Source Files\game\ecs\systems</Filter>
+      <Filter>Source Files\Game\Ecs\systems</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\core\UserInput.h">
-      <Filter>Source Files\game\core</Filter>
+      <Filter>Source Files\Game\core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\GameState\GameState.h">
-      <Filter>Source Files\game\GameState</Filter>
+      <Filter>Source Files\Game\GameState</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\GameState\IState.h">
-      <Filter>Source Files\game\GameState</Filter>
+      <Filter>Source Files\Game\GameState</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\GameState\states\Settings.h">
-      <Filter>Source Files\game\GameState\states</Filter>
+      <Filter>Source Files\Game\GameState\states</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\GameState\states\Title.h">
-      <Filter>Source Files\game\GameState\states</Filter>
+      <Filter>Source Files\Game\GameState\states</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\GameState\states\Setup.h">
-      <Filter>Source Files\game\GameState\states</Filter>
+      <Filter>Source Files\Game\GameState\states</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\core\GUI.h">
-      <Filter>Source Files\game\core</Filter>
+      <Filter>Source Files\Game\core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

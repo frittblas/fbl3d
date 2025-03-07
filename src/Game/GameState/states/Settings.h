@@ -2,7 +2,7 @@
 *
 *	Rock band manager
 *
-*	Settings.hpp
+*	Settings.h
 *
 *	Settings class header, takes care of the settings screen.
 *

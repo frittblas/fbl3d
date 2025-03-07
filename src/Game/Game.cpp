@@ -1,6 +1,6 @@
 /*
 *
-*	fbl3d
+*	Rock band manager
 *
 *	Game.cpp
 *
@@ -10,7 +10,7 @@
 *
 */
 
-#include "../engine/Engine.h"
+#include "../Engine/Engine.h"
 #include "Game.h"
 #include "Ecs/components.h"
 #include "Ecs/Ecs.h"
