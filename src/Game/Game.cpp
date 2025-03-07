@@ -17,6 +17,7 @@
 #include "GameState/GameState.h"
 #include "core/UserInput.h"
 #include "core/GUI.h"
+#include "core/Band.h"
 
 Game::Game()
 {
@@ -37,25 +38,13 @@ void test()
 
 bool Game::init()
 {
-	Engine::mSpr.loadTexture(Engine::mRenderer, "assets/spritesheet.bmp");
+	Engine::mSpr.loadTexture(Engine::mRenderer, "assets/spritesheet.png");
 
 	mEcs = new Ecs();
     mState = new GameState();
     mInput = new UserInput();
     mGui = new GUI(*this);
-
-	// test ui
-	//int i = Engine::mUI.createElement(UIType::CHECKBOX, 300, 100, "mr checkbox", nullptr);
-	//int id = Engine::mUI.createElement(UIType::TEXT_LABEL, 200, 100, "Testing longer string", nullptr);
- //   int id1 = Engine::mUI.createElement(UIType::BUTTON, 100, 100, "Hej", test);
-	//int id2 = Engine::mUI.createElement(UIType::BUTTON, 300, 100, "Hej2", test);
-	//int i2 = Engine::mUI.createElement(UIType::CHECKBOX, 300, 200, "mr checkbox2", nullptr);
-	//int id22 = Engine::mUI.createElement(UIType::TEXT_LABEL, 200, 200, "Testing longer string2", nullptr);
-	//int id11 = Engine::mUI.createElement(UIType::BUTTON, 100, 200, "Hej222222222222", test);
-	//int id23 = Engine::mUI.createElement(UIType::BUTTON, 350, 250, "Hej2333333333", test);
-	//int id3 = Engine::mUI.createWindow("Babys first window.");
- //   Engine::mUI.addElementToWindow(id3, id2);
-	//Engine::mUI.addElementToWindow(id3, id22);
+    mBand = new Band(*this);
 
 	return true;
 }
@@ -72,4 +61,5 @@ void Game::exit()
     delete mState;
     delete mInput;
     delete mGui;
+    delete mBand;
 }

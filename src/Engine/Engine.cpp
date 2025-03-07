@@ -57,12 +57,15 @@ bool Engine::initEngine(int w, int h, int fps)
     mWindow = SDL_CreateWindow("Rock Band Manager", w, h, 0);
     if(mWindow == nullptr) {
         SDL_Log("Window could not be created! SDL error: %s\n", SDL_GetError());
+        SDL_Quit();
         return false;
     }
 
     mRenderer = SDL_CreateRenderer(mWindow, nullptr);
     if (mRenderer == nullptr) {
         SDL_Log("Renderer could not be created! SDL error: %s\n", SDL_GetError());
+        SDL_DestroyWindow(mWindow);
+        SDL_Quit();
 		return false;
     }
 

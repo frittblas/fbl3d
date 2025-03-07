@@ -27,3 +27,9 @@ struct SpriteComp
     int spriteId;
 	float x, y, w, h; // where on the sheet is the sprite located?
 };
+
+struct StatComp
+{
+    int skill, artistry, charm, drive;
+    int stress;
+};

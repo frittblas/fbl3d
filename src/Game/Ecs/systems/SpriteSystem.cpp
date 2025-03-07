@@ -35,8 +35,8 @@ void SpriteSystem::update()
 
     view.each([](const entt::entity entity, PosComp& pos, const SpriteComp& spr, const VelComp& vel) {
 
-        pos.x += vel.x * Engine::mDeltaTime;
-        pos.y += vel.y * Engine::mDeltaTime;
+        //pos.x += vel.x * Engine::mDeltaTime;
+        //pos.y += vel.y * Engine::mDeltaTime;
 
         Engine::mSpr.get(spr.spriteId).dst.x = pos.x;
         Engine::mSpr.get(spr.spriteId).dst.y = pos.y;

@@ -16,6 +16,7 @@ class Ecs;
 class GameState;
 class UserInput;
 class GUI;
+class Band;
 
 class Game
 {
@@ -32,6 +33,7 @@ public:
     GameState* mState;
     UserInput* mInput;
     GUI* mGui;
+    Band* mBand;
 
     // the game uses this internally
     static const int LogicalResW = 1920;

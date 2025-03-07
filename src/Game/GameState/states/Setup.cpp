@@ -14,6 +14,7 @@
 #include "../../Game.h"
 #include "../../Ecs/components.h"
 #include "../../Ecs/Ecs.h"
+#include "../../Game/core/Band.h"
 #include "Setup.h"
 
 Setup::Setup()
@@ -45,19 +46,6 @@ void Setup::tick(Game& g)
 
 void Setup::init(Game& g)
 {
-
-	entt::entity mPlayer, mPlayer2;
-
-	mPlayer = g.mEcs->mReg.create();
-	g.mEcs->mReg.emplace<PosComp>(mPlayer, 10.0f, 10.0f);
-	g.mEcs->mReg.emplace<SpriteComp>(mPlayer, 0, 0.0f, 0.0f, 100.0f, 100.0f);
-	g.mEcs->mReg.emplace<VelComp>(mPlayer, 20.0f, 20.0f);
-
-	mPlayer2 = g.mEcs->mReg.create();
-	g.mEcs->mReg.emplace<PosComp>(mPlayer2, 500.0f, 10.0f);
-	g.mEcs->mReg.emplace<SpriteComp>(mPlayer2, 0, 100.0f, 0.0f, 100.0f, 100.0f);
-	g.mEcs->mReg.emplace<VelComp>(mPlayer2, 20.0f, 20.0f);
-
+    g.mBand->init(g);
 	g.mEcs->mSpriteSys->init();
-
 }
