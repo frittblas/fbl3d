@@ -27,6 +27,8 @@ public:
     void tick(Game& g);
     void init(Game& g);
 
+    static const int mMaxMembers = 4;
+
     std::vector<entt::entity> mLineUp;
 
 private:

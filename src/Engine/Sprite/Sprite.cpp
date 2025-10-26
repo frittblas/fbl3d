@@ -107,7 +107,7 @@ uint32_t SpriteManager::create(float x, float y, float w, float h, uint8_t layer
 	};
 
 	mSpriteList.push_back(spr);
-	mIdToIndexMap[mNextSpriteId] = mSpriteList.size() - 1; //map id to index
+	mIdToIndexMap[mNextSpriteId] = mSpriteList.size() - 1; // map id to index
 	return mNextSpriteId++;
 }
 
