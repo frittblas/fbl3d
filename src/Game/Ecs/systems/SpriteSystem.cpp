@@ -10,8 +10,6 @@
 *
 */
 
-#pragma once
-
 #include "../../Engine/Engine.h"
 #include "../components.h"
 #include "SpriteSystem.h"
