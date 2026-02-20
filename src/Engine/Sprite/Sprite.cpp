@@ -11,8 +11,8 @@
 *
 */
 
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb/stb_image.h>
+//#define STB_IMAGE_IMPLEMENTATION
+//#include <stb/stb_image.h>
 #include "Sprite.h"
 #include <iostream>
 #include <algorithm>
@@ -27,34 +27,7 @@ SpriteManager::~SpriteManager()
 	clearAll();
 	SDL_DestroyTexture(mTexture);
 }
-
-//bool SpriteManager::loadTexture(SDL_Renderer* renderer, const char* path)
-//{
-//
-//	SDL_Surface* surface = SDL_LoadBMP(path);
-//
-//	if (!surface) {
-//		SDL_Log("Error loading sprite texture: %s", SDL_GetError());
-//		return false;
-//	}
-//
-//	// 2. Set the color key (magenta)
-//	//Uint32 magentaColor = SDL_MapRGB(surface->format, 255, 0, 255);
-//	//SDL_SetSurfaceColorKey(surface, true, magentaColor);
-//
-//	mTexture = SDL_CreateTextureFromSurface(renderer, surface);
-//
-//	if (!mTexture) {
-//		SDL_Log("Error creating sprite texture from surface: %s", SDL_GetError());
-//		return false;
-//	}
-//
-//	SDL_DestroySurface(surface);
-//
-//	return true;
-//
-//}
-
+/*
 bool SpriteManager::loadTexture(SDL_Renderer* renderer, const char* path)
 {
     if (!renderer || !path) {
@@ -97,18 +70,66 @@ bool SpriteManager::loadTexture(SDL_Renderer* renderer, const char* path)
     SDL_Log("Successfully loaded texture: %s", path);
     return true;
 }
+*/
+
+bool SpriteManager::loadTexture(SDL_Renderer* renderer, const char* path)
+{
+    if (!renderer) {
+        SDL_Log("Invalid renderer provided to loadTexture");
+        return false;
+    }
+
+    if (!path) {
+        SDL_Log("Invalid path provided to loadTexture");
+        return false;
+    }
+
+    // Load PNG into an SDL_Surface using SDL3 built-in loader
+    SDL_Surface* surface = SDL_LoadPNG(path);
+    if (!surface) {
+        SDL_Log("Failed to load PNG %s: %s", path, SDL_GetError());
+        return false;
+    }
+
+    // Create texture directly from surface
+    SDL_Texture* newTexture = SDL_CreateTextureFromSurface(renderer, surface);
+    if (!newTexture) {
+        SDL_Log("Failed to create SDL texture: %s", SDL_GetError());
+        SDL_DestroySurface(surface);
+        return false;
+    }
+
+    SDL_SetTextureBlendMode(newTexture, SDL_BLENDMODE_BLEND);
+
+    // Free the surface (no longer needed after texture creation)
+    SDL_DestroySurface(surface);
+
+    // Free previous texture if needed
+    if (mTexture) {
+        SDL_DestroyTexture(mTexture);
+    }
+
+    mTexture = newTexture;
+
+    SDL_Log("Successfully loaded texture: %s", path);
+    return true;
+}
 
 uint32_t SpriteManager::create(float x, float y, float w, float h, uint8_t layer)
 {
 	Sprite spr{
 	{x, y, w, h}, // src
 	{0, 0, w, h}, // dst
-	layer
+	layer,
+    true // visible
 	};
 
+    uint32_t id = mNextSpriteId++;
+
 	mSpriteList.push_back(spr);
-	mIdToIndexMap[mNextSpriteId] = mSpriteList.size() - 1; // map id to index
-	return mNextSpriteId++;
+    mDrawOrder.push_back(id);
+
+	return id;
 }
 
 Sprite& SpriteManager::get(uint32_t id)
@@ -116,26 +137,29 @@ Sprite& SpriteManager::get(uint32_t id)
 	return mSpriteList[id];
 }
 
-void SpriteManager::sort() {
-
+void SpriteManager::sort()
+{
+    std::sort(mDrawOrder.begin(), mDrawOrder.end(),
+        [this](uint32_t a, uint32_t b)
+        {
+            return mSpriteList[a].layer < mSpriteList[b].layer;
+        });
 }
 
 void SpriteManager::clearAll()
 {
 	mSpriteList.clear();
-	mIdToIndexMap.clear();
+    mDrawOrder.clear();
 	mNextSpriteId = 0;
 }
 
 void SpriteManager::render(SDL_Renderer* renderer)
 {
 
-	const size_t spriteCount = mSpriteList.size();
-
-	// render sprites
-	for (int i = 0; i < spriteCount; i++) {
-		SDL_RenderTextureRotated(renderer, mTexture, &mSpriteList[i].src,
-			&mSpriteList[i].dst, 0, nullptr, SDL_FLIP_NONE);
-	}
+    for (uint32_t id : mDrawOrder) {
+        Sprite& spr = mSpriteList[id];
+        if (spr.visible)
+            SDL_RenderTextureRotated(renderer, mTexture, &spr.src, &spr.dst, 0, nullptr, SDL_FLIP_NONE);
+    }
 
 }

@@ -1,7 +1,7 @@
 
 # Using this package
 
-This package contains SDL built for Visual Studio.
+This package contains SDL3 built for Visual Studio.
 
 To use this package, edit your project properties:
 - Add the include directory to "VC++ Directories" -> "Include Directories"

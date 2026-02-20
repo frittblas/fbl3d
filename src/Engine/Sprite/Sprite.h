@@ -23,6 +23,7 @@ struct Sprite
 {
 	SDL_FRect src, dst;	// src rect is image on texture, dst rect is where on screen
 	uint8_t layer;
+    bool visible;
 };
 
 class SpriteManager
@@ -44,7 +45,7 @@ private:
 	void render(SDL_Renderer* renderer);
 
 	std::vector<Sprite> mSpriteList;
-	std::unordered_map<uint32_t, size_t> mIdToIndexMap;
+	std::vector<uint32_t> mDrawOrder;
 
 	SDL_Texture* mTexture;
 

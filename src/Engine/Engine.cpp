@@ -78,6 +78,12 @@ bool Engine::initEngine(int w, int h, int fps)
 	mLogMessages = true;
     mQuit = false;
 
+    int linkedVer = SDL_GetVersion();
+    SDL_Log("SDL linked version: %d.%d.%d",
+        SDL_VERSIONNUM_MAJOR(linkedVer),
+        SDL_VERSIONNUM_MINOR(linkedVer),
+        SDL_VERSIONNUM_MICRO(linkedVer));
+
     SDL_Log("fbl3d started! :)\n");
 
     return true;
