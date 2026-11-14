@@ -75,7 +75,7 @@ void UIManager::init(SDL_Window* window, SDL_Renderer* renderer)
     // Tab colors (orange)
     style.Colors[ImGuiCol_Tab] = ImVec4(0.8f, 0.4f, 0.0f, 1.0f); // Idle tab color
     style.Colors[ImGuiCol_TabHovered] = ImVec4(0.9f, 0.5f, 0.1f, 1.0f); // Hovered tab color
-    style.Colors[ImGuiCol_TabActive] = ImVec4(0.7f, 0.3f, 0.0f, 1.0f); // Active tab color
+    style.Colors[ImGuiCol_TabSelected] = ImVec4(0.7f, 0.3f, 0.0f, 1.0f); // Active tab color
 
     // Window title bar colors (orange)
     style.Colors[ImGuiCol_TitleBg] = ImVec4(0.7f, 0.3f, 0.0f, 1.0f); // Idle title bar color
